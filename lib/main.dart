@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'common/Global.dart';
+import 'common/GmLocalizations.dart';
 import 'common/LocaleModel.dart';
 import 'common/ThemeModel.dart';
 import 'common/UserModel.dart';
@@ -27,6 +28,7 @@ class MyApp extends StatelessWidget {
           onGenerateTitle: (context){
             return GmLocalizations.of(context).title;
     },
+    home: HomePa,
           )
     },
     )
