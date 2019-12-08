@@ -4,6 +4,7 @@ import 'package:github_client_app/common/Git.dart';
 import 'package:github_client_app/common/GmLocalizations.dart';
 import 'package:github_client_app/common/UserModel.dart';
 import 'package:github_client_app/models/repo.dart';
+import 'package:github_client_app/widgets/MyDrawer.dart';
 import 'package:github_client_app/widgets/RepoItem.dart';
 import 'package:provider/provider.dart';
 
@@ -28,7 +29,8 @@ class _HomeRouteState extends State<HomeRoute> {
             .of(context)
             .home),
       ),
-      body:,
+      body:_buildBody(),
+      drawer: MyDrawer(),
     );
   }
 
@@ -61,7 +63,7 @@ class _HomeRouteState extends State<HomeRoute> {
           // 项目信息列表项
           return RepoItem(list[index]);
         },
-      )
+      );
     }
   }
 

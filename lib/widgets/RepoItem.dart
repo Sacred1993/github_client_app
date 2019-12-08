@@ -4,6 +4,8 @@ import 'package:github_client_app/common/MyIcons.dart';
 import 'package:github_client_app/models/repo.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
+import 'ImageUtil.dart';
+
 class RepoItem extends StatefulWidget {
   // 将`repo.id`作为RepoItem的默认key,在下一次build时复用旧的widget
   RepoItem(this.repo) : super(key: ValueKey(repo.id));
@@ -41,7 +43,7 @@ class _RepoItemState extends State<RepoItem> {
             children: <Widget>[
               ListTile(
                 dense: true,
-                leading: gmAvatar(
+                leading: ImageUtil.gmAvatar(
                   //项目owner头像
                   widget.repo.owner.avatar_url,
                   width: 24.0,
@@ -95,7 +97,7 @@ class _RepoItemState extends State<RepoItem> {
                         ))
                   ],
                 ),
-              )
+              ),
               //构建卡片底部
               _buildBottom()
             ],
@@ -105,33 +107,7 @@ class _RepoItemState extends State<RepoItem> {
     );
   }
 
-  /**
-   * 专门用于获取头像图片
-   */
-  Widget gmAvatar(String url, {
-    double width = 30,
-    double height,
-    BoxFit fit,
-    BorderRadius borderRadius,
-  }) {
-    var placeholder = Image.asset(
-      "imgs/avatar-default.png", //头像占位图，加载过程中显示
-      width: width,
-      height: height,
-    );
-    return ClipRRect(
-      //剪裁为圆角矩形
-      borderRadius: borderRadius ?? BorderRadius.circular(2),
-      child: CachedNetworkImage(
-        imageUrl: url,
-        width: width,
-        height: height,
-        fit: fit,
-        placeholder: (context, url) => placeholder,
-        errorWidget: (context, url, error) => placeholder,
-      ),
-    );
-  }
+
 
   /**
    * 卡片底部
