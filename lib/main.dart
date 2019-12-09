@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:github_client_app/routes/LanguageRoute.dart';
+import 'package:github_client_app/routes/ThemeChangeRoute.dart';
+import 'package:github_client_app/routes/home_page.dart';
 import 'package:provider/provider.dart';
 
 import 'common/Global.dart';
@@ -19,19 +23,53 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider.value(value: LocaleModel()),
         ChangeNotifierProvider.value(value: UserModel()),
       ],
-      child: Consumer2<ThemeModel,LocaleModel>(
-          builder: (BuildContext context,themeModel,localeModel,Widget child){
-          return MaterialApp(
+      child: Consumer2<ThemeModel, LocaleModel>(builder:
+          (BuildContext context, themeModel, localeModel, Widget child) {
+        return MaterialApp(
           theme: ThemeData(
             primaryColor: themeModel.theme,
           ),
-          onGenerateTitle: (context){
+          onGenerateTitle: (context) {
             return GmLocalizations.of(context).title;
-    },
-    home: HomePa,
-          )
-    },
-    )
+          },
+          home: HomeRoute(),
+          locale: localeModel.getLocale(),
+          //我们只支持美国英语和中文简体
+          supportedLocales: [
+            const Locale('en', 'US'),
+            const Locale('zh', 'CN'),
+          ],
+          localizationsDelegates: [
+            // 本地化的代理类
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GmLocalizationsDelegate()
+          ],
+          localeResolutionCallback: (Locale _locale, Iterable<Locale> supportedLocales){
+            if(localeModel.getLocale()!=null){
+              //如果已经选定语言，则不跟随系统
+              return localeModel.getLocale();
+            }else{
+              Locale locale;
+              //APP语言跟随系统语言，如果系统语言不是中文简体或美国英语，
+              //则默认使用美国英语
+              if(supportedLocales.contains(_locale)){
+                locale=_locale;
+              }else{
+                locale=Locale('en','US');
+              }
+              return locale;
+            }
+          },
+          // 注册命名路由表
+          routes: <String, WidgetBuilder>{
+            "themes":(context)=>ThemeChangeRoute(),
+            "language":(context)=>LanguageRoute(),
+            
+          },
+        );
+      }),
+    );
   }
 }
 

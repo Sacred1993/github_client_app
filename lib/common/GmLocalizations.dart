@@ -9,12 +9,16 @@ class GmLocalizations {
   //是否为中文
   bool isZh = false;
   Locale _locale;
-  String theme;
+  String theme="换肤";
   String noDescription="noDescription";
   String home="Github客户端";
   String auto = "auto";
   String language;
   String login="登陆";
+  String logout="注销";
+    String logoutTip="确定要注销吗";
+  String cancel="取消";
+  String yes="是的";
 
   //为了使用方便，我们定义一个静态方法
   static GmLocalizations of(BuildContext context) {
