@@ -28,9 +28,7 @@ class _RepoItemState extends State<RepoItem> {
         color: Colors.white,
         shape: BorderDirectional(
           bottom: BorderSide(
-            color: Theme
-                .of(context)
-                .dividerColor,
+            color: Theme.of(context).dividerColor,
             width: .5,
           ),
         ),
@@ -76,28 +74,26 @@ class _RepoItemState extends State<RepoItem> {
                         padding: const EdgeInsets.only(top: 8, bottom: 12),
                         child: widget.repo.description == null
                             ? Text(
-                          GmLocalizations
-                              .of(context)
-                              .noDescription,
-                          style: TextStyle(
-                            fontStyle: FontStyle.italic,
-                            color: Colors.grey[700],
-                          ),
-                        )
+                                GmLocalizations.of(context).noDescription,
+                                style: TextStyle(
+                                  fontStyle: FontStyle.italic,
+                                  color: Colors.grey[700],
+                                ),
+                              )
                             : Text(
-                          widget.repo.description,
-                          maxLines: 3,
-                          style: TextStyle(
-                            height: 1.15,
-                            color: Colors.blueGrey[700],
-                            fontSize: 13,
-                          ),
-                        ))
+                                widget.repo.description,
+                                maxLines: 3,
+                                style: TextStyle(
+                                  height: 1.15,
+                                  color: Colors.blueGrey[700],
+                                  fontSize: 13,
+                                ),
+                              ))
                   ],
                 ),
-              )
+              ),
               //构建卡片底部
-              _buildBottom()
+              _buildBottom(),
             ],
           ),
         ),
@@ -108,7 +104,8 @@ class _RepoItemState extends State<RepoItem> {
   /**
    * 专门用于获取头像图片
    */
-  Widget gmAvatar(String url, {
+  Widget gmAvatar(
+    String url, {
     double width = 30,
     double height,
     BoxFit fit,
@@ -150,11 +147,15 @@ class _RepoItemState extends State<RepoItem> {
             child: Builder(builder: (context) {
               var children = <Widget>[
                 Icon(Icons.star),
-                Text(" " + widget.repo.stargazers_count.toString().padRight(
-                    paddingWidth)),
+                Text(" " +
+                    widget.repo.stargazers_count
+                        .toString()
+                        .padRight(paddingWidth)),
                 Icon(Icons.info_outline),
-                Text(" " + widget.repo.open_issues_count.toString().padRight(
-                    paddingWidth)),
+                Text(" " +
+                    widget.repo.open_issues_count
+                        .toString()
+                        .padRight(paddingWidth)),
                 Icon(MyIcons.fork), //我们的自定义图标
                 Text(" " +
                     widget.repo.forks_count.toString().padRight(paddingWidth)),
@@ -170,7 +171,9 @@ class _RepoItemState extends State<RepoItem> {
                   Text(" private".padRight(paddingWidth))
                 ]);
               }
-              return Row(children: children,);
+              return Row(
+                children: children,
+              );
             }),
           )),
     );
