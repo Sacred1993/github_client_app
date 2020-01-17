@@ -3,7 +3,7 @@ import 'package:github_client_app/common/GmLocalizations.dart';
 import 'package:github_client_app/common/UserModel.dart';
 import 'package:provider/provider.dart';
 
-import 'ImageUtil.dart';
+import 'Utils.dart';
 
 class MyDrawer extends StatelessWidget {
   const MyDrawer({Key key,}) :super(key: key);
@@ -45,7 +45,7 @@ class MyDrawer extends StatelessWidget {
                   child: ClipOval(
                     // 如果已登录，则显示用户头像；若未登录，则显示默认头像
                     child: value.isLogin
-                        ? ImageUtil.gmAvatar(value.user.avatar_url, width: 80)
+                        ? gmAvatar(value.user.avatar_url, width: 80)
                         : Image.asset("imgs/avatar-default.png",
                       width: 80,
                     ),

@@ -4,7 +4,7 @@ import 'package:github_client_app/common/MyIcons.dart';
 import 'package:github_client_app/models/repo.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
-import 'ImageUtil.dart';
+import 'Utils.dart';
 
 class RepoItem extends StatefulWidget {
   // 将`repo.id`作为RepoItem的默认key,在下一次build时复用旧的widget
@@ -41,7 +41,7 @@ class _RepoItemState extends State<RepoItem> {
             children: <Widget>[
               ListTile(
                 dense: true,
-                leading: ImageUtil.gmAvatar(
+                leading: gmAvatar(
                   //项目owner头像
                   widget.repo.owner.avatar_url,
                   width: 24.0,

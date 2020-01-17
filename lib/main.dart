@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:github_client_app/routes/LanguageRoute.dart';
+import 'package:github_client_app/routes/LoginRoute.dart';
 import 'package:github_client_app/routes/ThemeChangeRoute.dart';
 import 'package:github_client_app/routes/home_page.dart';
 import 'package:provider/provider.dart';
@@ -65,7 +66,7 @@ class MyApp extends StatelessWidget {
           routes: <String, WidgetBuilder>{
             "themes":(context)=>ThemeChangeRoute(),
             "language":(context)=>LanguageRoute(),
-            
+            "login":(context)=>LoginRoute(),
           },
         );
       }),

@@ -32,7 +32,8 @@ dependencies:
   #Widget now uses builders for the placeholder and error widget and uses sqflite for cache management
   cached_network_image: ^1.1.3
 
-
+  fluttertoast: ^3.1.3
+  loading: ^1.0.2
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
