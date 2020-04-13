@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:github_client_app/animation/animate_widget/animated_decorated_box1_test.dart';
+import 'package:github_client_app/animation/animated_switcher/AnimatedSwitcher.dart';
+import 'package:github_client_app/animation/animated_widgets_test.dart';
+import 'package:github_client_app/animation/animation_test.dart';
+import 'package:github_client_app/animation/hero/hero_animation_route.dart';
+import 'package:github_client_app/animation/stagger/stagger_route.dart';
 import 'package:github_client_app/routes/LanguageRoute.dart';
 import 'package:github_client_app/routes/LoginRoute.dart';
 import 'package:github_client_app/routes/ThemeChangeRoute.dart';
@@ -33,7 +39,7 @@ class MyApp extends StatelessWidget {
           onGenerateTitle: (context) {
             return GmLocalizations.of(context).title;
           },
-          home: HomeRoute(),
+          home: AnimatedWidgetsTest(),
           locale: localeModel.getLocale(),
           //我们只支持美国英语和中文简体
           supportedLocales: [

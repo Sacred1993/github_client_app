@@ -46,12 +46,12 @@ class _LoginRouteState extends State<LoginRoute> {
       body: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Form(
-            key: _formKey,
+            key: _formKey,//设置globalKey，用于后面获取FormState
             autovalidate: true,
             child: Column(
               children: <Widget>[
                 TextFormField(
-                  autofocus: _nameAutoFocus,
+                  autofocus: _nameAutoFocus,//是否对焦
                   controller: _unameController,
                   decoration: InputDecoration(
                     labelText: gm.userName,
