@@ -65,7 +65,7 @@ class MyApp extends StatelessWidget {
           routes: <String, WidgetBuilder>{
             "themes":(context)=>ThemeChangeRoute(),
             "language":(context)=>LanguageRoute(),
-            
+
           },
         );
       }),
