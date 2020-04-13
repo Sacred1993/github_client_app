@@ -4,7 +4,7 @@ import 'package:github_client_app/common/MyIcons.dart';
 import 'package:github_client_app/models/repo.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
-import 'ImageUtil.dart';
+import 'Utils.dart';
 
 class RepoItem extends StatefulWidget {
   // 将`repo.id`作为RepoItem的默认key,在下一次build时复用旧的widget
@@ -30,9 +30,7 @@ class _RepoItemState extends State<RepoItem> {
         color: Colors.white,
         shape: BorderDirectional(
           bottom: BorderSide(
-            color: Theme
-                .of(context)
-                .dividerColor,
+            color: Theme.of(context).dividerColor,
             width: .5,
           ),
         ),
@@ -43,7 +41,7 @@ class _RepoItemState extends State<RepoItem> {
             children: <Widget>[
               ListTile(
                 dense: true,
-                leading: ImageUtil.gmAvatar(
+                leading: gmAvatar(
                   //项目owner头像
                   widget.repo.owner.avatar_url,
                   width: 24.0,
@@ -78,36 +76,32 @@ class _RepoItemState extends State<RepoItem> {
                         padding: const EdgeInsets.only(top: 8, bottom: 12),
                         child: widget.repo.description == null
                             ? Text(
-                          GmLocalizations
-                              .of(context)
-                              .noDescription,
-                          style: TextStyle(
-                            fontStyle: FontStyle.italic,
-                            color: Colors.grey[700],
-                          ),
-                        )
+                                GmLocalizations.of(context).noDescription,
+                                style: TextStyle(
+                                  fontStyle: FontStyle.italic,
+                                  color: Colors.grey[700],
+                                ),
+                              )
                             : Text(
-                          widget.repo.description,
-                          maxLines: 3,
-                          style: TextStyle(
-                            height: 1.15,
-                            color: Colors.blueGrey[700],
-                            fontSize: 13,
-                          ),
-                        ))
+                                widget.repo.description,
+                                maxLines: 3,
+                                style: TextStyle(
+                                  height: 1.15,
+                                  color: Colors.blueGrey[700],
+                                  fontSize: 13,
+                                ),
+                              ))
                   ],
                 ),
               ),
               //构建卡片底部
-              _buildBottom()
+              _buildBottom(),
             ],
           ),
         ),
       ),
     );
   }
-
-
 
   /**
    * 卡片底部
@@ -126,11 +120,15 @@ class _RepoItemState extends State<RepoItem> {
             child: Builder(builder: (context) {
               var children = <Widget>[
                 Icon(Icons.star),
-                Text(" " + widget.repo.stargazers_count.toString().padRight(
-                    paddingWidth)),
+                Text(" " +
+                    widget.repo.stargazers_count
+                        .toString()
+                        .padRight(paddingWidth)),
                 Icon(Icons.info_outline),
-                Text(" " + widget.repo.open_issues_count.toString().padRight(
-                    paddingWidth)),
+                Text(" " +
+                    widget.repo.open_issues_count
+                        .toString()
+                        .padRight(paddingWidth)),
                 Icon(MyIcons.fork), //我们的自定义图标
                 Text(" " +
                     widget.repo.forks_count.toString().padRight(paddingWidth)),
@@ -146,7 +144,9 @@ class _RepoItemState extends State<RepoItem> {
                   Text(" private".padRight(paddingWidth))
                 ]);
               }
-              return Row(children: children,);
+              return Row(
+                children: children,
+              );
             }),
           )),
     );

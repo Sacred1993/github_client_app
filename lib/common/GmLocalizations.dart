@@ -19,6 +19,12 @@ class GmLocalizations {
     String logoutTip="确定要注销吗";
   String cancel="取消";
   String yes="是的";
+  String userName="用户名";
+  String userNameOrEmail="用户名或邮箱";
+  String userNameRequired="用户名不能为空";
+  String password="密码";
+  String passwordRequired="密码不能为空";
+  String userNameOrPasswordWrong="用户名或密码错误";
 
   //为了使用方便，我们定义一个静态方法
   static GmLocalizations of(BuildContext context) {

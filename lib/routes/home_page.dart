@@ -13,7 +13,7 @@ class HomeRoute extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
-    return null;
+    return _HomeRouteState();
   }
 }
 
@@ -58,6 +58,8 @@ class _HomeRouteState extends State<HomeRoute> {
           );
           //把请求到的新数据添加到items中
           items.addAll(data);
+          // 如果接口返回的数量等于'page_size'，则认为还有数据，反之则认为最后一页
+          return data.length==20;
         },
         itemBuilder: (List<Repo> list, int index, BuildContext ctx) {
           // 项目信息列表项
